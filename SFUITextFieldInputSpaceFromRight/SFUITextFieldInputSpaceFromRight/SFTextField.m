@@ -30,9 +30,12 @@
 
 - (void)replaceNormalSpaceUsingNonbreakingSpace
 {
-    UITextRange *textRange = self.selectedTextRange;
-    self.text = [self.text stringByReplacingOccurrencesOfString:@" " withString:@"\u00a0"];
-    [self setSelectedTextRange:textRange];
+    if(!self.markedTextRange){
+        UITextRange *textRange = self.selectedTextRange;
+        self.text = [self.text stringByReplacingOccurrencesOfString:@" " withString:@"\u00a0"];
+        [self setSelectedTextRange:textRange];
+    }
+    
 }
 
 @end
